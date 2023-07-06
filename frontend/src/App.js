@@ -23,7 +23,7 @@ import { IonReactRouter } from '@ionic/react-router';
 
 import { Route, Redirect } from 'react-router';
 
-import { playCircle, radio, library, search } from 'ionicons/icons';
+import { playCircle, radio, library, exit, fileTray, search, peopleCircleOutline, serverOutline } from 'ionicons/icons';
 import HomePage from './screens/HomePage'
 
 // import HomePage from './pages/HomePage';
@@ -39,7 +39,7 @@ const App = () => {
       {/* <Router> */}
       <IonTabs>
         <IonRouterOutlet>
-          <Header />
+          {/* <Header /> */}
           <main className='py-3'>
             <Container>
               <Route path='/order/:id' component={OrderScreen} />
@@ -72,7 +72,7 @@ const App = () => {
                 component={HomeScreen}
                 exact
               />
-              <Route path='/' component={HomePage} exact />
+              <Route path='/' component={LoginScreen} exact />
             </Container>
           </main>
           {/* <Footer /> */}
@@ -80,23 +80,23 @@ const App = () => {
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="home" href="/admin/productlist">
-            <IonIcon icon={playCircle} />
+            <IonIcon icon={library} />
             <IonLabel>Products</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="radio" href="/admin/orderlist">
-            <IonIcon icon={radio} />
+            <IonIcon icon={fileTray} />
             <IonLabel>Orders</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="library" href="/admin/userlist">
-            <IonIcon icon={library} />
+            <IonIcon icon={peopleCircleOutline} />
             <IonLabel>Users</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="search" href="/search">
-            <IonIcon icon={search} />
-            <IonLabel>Search</IonLabel>
+            <IonIcon icon={exit} />
+            <IonLabel>Logout</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

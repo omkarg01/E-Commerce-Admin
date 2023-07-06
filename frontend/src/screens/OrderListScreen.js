@@ -27,9 +27,9 @@ const OrderListScreen = ({ history }) => {
 
   return (
     <IonPage>
-      <MyHeader title={"Orders"} link={"home"} />
+      <MyHeader title={"Orders"} />
       <IonContent className="ion-padding">
-        <h1>Orders</h1>
+        {/* <h1>Orders</h1> */}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -41,26 +41,26 @@ const OrderListScreen = ({ history }) => {
                 <th>ID</th>
                 <th>USER</th>
                 <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
+                {/* <th>TOTAL</th> */}
+                {/* <th>PAID</th> */}
                 <th>DELIVERED</th>
                 <th></th>
               </tr>
             </thead>
             <tbody style={{fontFamily: "Fantasy"}}>
-              {orders.map((order) => (
+              {orders.map((order, index) => (
                 <tr key={order._id}>
-                  <td>{order._id}</td>
+                  <td>{index + 1}</td>
                   <td>{order.user && order.user.name}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>${order.totalPrice}</td>
-                  <td>
+                  {/* <td>${order.totalPrice}</td> */}
+                  {/* <td>
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
-                  </td>
+                  </td> */}
                   <td>
                     {order.isDelivered ? (
                       order.deliveredAt.substring(0, 10)

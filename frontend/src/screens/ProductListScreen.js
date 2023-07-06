@@ -75,13 +75,13 @@ const ProductListScreen = ({ history, match }) => {
 
   return (
     <IonPage>
-      <MyHeader title={"Products"} link={"home"} />
+      <MyHeader title={"Products"} />
       <IonContent className="ion-padding">
         <Row className='align-items-center'>
-          <Col>
+          {/* <Col>
             <h1>Products</h1>
-          </Col>
-          <Col className='text-right'>
+          </Col> */}
+          <Col className='text-center'>
             <Button className='my-3' onClick={createProductHandler}>
               <i className='fas fa-plus'></i> Create Product
             </Button>
@@ -102,20 +102,20 @@ const ProductListScreen = ({ history, match }) => {
                 <tr>
                   <th>ID</th>
                   <th>NAME</th>
-                  <th>PRICE</th>
+                  {/* <th>PRICE</th> */}
                   <th>CATEGORY</th>
-                  <th>BRAND</th>
+                  {/* <th>BRAND</th> */}
                   <th></th>
                 </tr>
               </thead>
               <tbody style={{fontFamily: "Fantasy"}}>
-                {products.map((product) => (
+                {products.map((product, index) => (
                   <tr key={product._id}>
-                    <td>{product._id}</td>
+                    <td>{index + 1}</td>
                     <td>{product.name}</td>
-                    <td>${product.price}</td>
+                    {/* <td>${product.price}</td> */}
                     <td>{product.category}</td>
-                    <td>{product.brand}</td>
+                    {/* <td>{product.brand}</td> */}
                     <td>
                       <LinkContainer to={`/admin/product/${product._id}/edit`}>
                         <Button variant='light' className='btn-sm'>
