@@ -6,7 +6,7 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 
-import '@ionic/react/css/core.css';
+
 
 const Header = () => {
   const dispatch = useDispatch()

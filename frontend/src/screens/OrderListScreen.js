@@ -48,6 +48,7 @@ const OrderListScreen = ({ history }) => {
               </tr>
             </thead>
             <tbody style={{fontFamily: "Fantasy"}}>
+              {console.log(orders)}
               {orders.map((order, index) => (
                 <tr key={order._id}>
                   <td>{index + 1}</td>

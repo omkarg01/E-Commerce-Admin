@@ -11,11 +11,15 @@ import {
   createProduct,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react'
-import { caretBack } from 'ionicons/icons';
+import { IonContent, IonPage } from '@ionic/react'
 import MyHeader from '../components/MyHeader'
+// import { IonBackButton, IonButtons, IonHeader, IonTitle, IonToolbar } from '@ionic/react'
+// import React from 'react'
+// import { caretBack } from 'ionicons/icons';
+// import { useSelector } from 'react-redux'
 
 const ProductListScreen = ({ history, match }) => {
+  console.log("hello");
   const pageNumber = match.params.pageNumber || 1
 
   const dispatch = useDispatch()
@@ -76,6 +80,14 @@ const ProductListScreen = ({ history, match }) => {
   return (
     <IonPage>
       <MyHeader title={"Products"} />
+      {/* <IonHeader style={{ "marginBottom": "20px" }}>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton icon={caretBack} mode={'md'}></IonBackButton>
+          </IonButtons>
+          <IonTitle>{"Products"}</IonTitle>
+        </IonToolbar>
+      </IonHeader> */}
       <IonContent className="ion-padding">
         <Row className='align-items-center'>
           {/* <Col>
@@ -108,7 +120,7 @@ const ProductListScreen = ({ history, match }) => {
                   <th></th>
                 </tr>
               </thead>
-              <tbody style={{fontFamily: "Fantasy"}}>
+              <tbody style={{ fontFamily: "Fantasy" }}>
                 {products.map((product, index) => (
                   <tr key={product._id}>
                     <td>{index + 1}</td>

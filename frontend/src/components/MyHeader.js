@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 const MyHeader = ({link, title}) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
-  console.log(userInfo)
+  // console.log(userInfo)
   return (
-    <IonHeader style={{"margin-bottom" : "20px"}}>
+    <IonHeader style={{"marginBottom" : "20px"}}>
       <IonToolbar>
         <IonButtons slot="start">
-          <IonBackButton icon={caretBack} mode={'md'} defaultHref={link}></IonBackButton>
+          <IonBackButton icon={caretBack} mode={'md'} defaultHref={link === null ? null : link}></IonBackButton>
         </IonButtons>
         <IonTitle>{title}</IonTitle>
       </IonToolbar>

@@ -89,7 +89,7 @@ const OrderScreen = ({ match, history }) => {
 
   return (
     <IonPage>
-      <MyHeader title={"Order"} link={"admin/orderlist"} />
+      <MyHeader title={"Order"} link={"/admin/orderlist"} />
       <IonContent className="ion-padding" style={{ fontFamily: "Fantasy" }}>
         {loading ? (
           <Loader />
@@ -202,7 +202,7 @@ const OrderScreen = ({ match, history }) => {
                         <Col>${order.totalPrice}</Col>
                       </Row>
                     </ListGroup.Item>
-                    {!order.isPaid && (
+                    {/* {!order.isPaid && (
                       <ListGroup.Item>
                         {loadingPay && <Loader />}
                         {!sdkReady ? (
@@ -214,7 +214,7 @@ const OrderScreen = ({ match, history }) => {
                           />
                         )}
                       </ListGroup.Item>
-                    )}
+                    )} */}
                     {loadingDeliver && <Loader />}
                     {userInfo &&
                       userInfo.isAdmin &&

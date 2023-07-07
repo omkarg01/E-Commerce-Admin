@@ -9,9 +9,9 @@ import Paginate from '../components/Paginate'
 import ProductCarousel from '../components/ProductCarousel'
 import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
-import { IonDatetime } from '@ionic/react'
 
 const HomeScreen = ({ match }) => {
+  console.log(match);
   const keyword = match.params.keyword
 
   const pageNumber = match.params.pageNumber || 1

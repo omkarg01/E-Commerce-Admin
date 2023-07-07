@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -95,7 +94,7 @@ const ProductEditScreen = ({ match, history }) => {
 
   return (
     <IonPage>
-      <MyHeader title={"Edit Product"} link={"admin/productlist"}/>
+      <MyHeader title={"Edit Product"} link={"/admin/productlist"}/>
       <IonContent className="ion-padding">
         {/* <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
