@@ -26,6 +26,7 @@ import { Route } from 'react-router';
 
 import { library, exit, fileTray, peopleCircleOutline, home } from 'ionicons/icons';
 import LogoutScreen from './screens/LogoutScreen'
+import PartnershipScreen from './screens/PartnershipScreen'
 
 
 const MainTabs = () => {
@@ -60,6 +61,7 @@ const MainTabs = () => {
         />
         <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
         <Route path='/admin/orderlist' component={OrderListScreen} />
+        <Route path='/admin/partnership' component={PartnershipScreen} />
         <Route path='/search/:keyword' component={HomeScreen} exact />
         <Route path='/page/:pageNumber' component={HomeScreen} exact />
         <Route
@@ -89,9 +91,14 @@ const MainTabs = () => {
           <IonLabel>Orders</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="users" href="/admin/userlist">
+        {/* <IonTabButton tab="users" href="/admin/userlist">
           <IonIcon icon={peopleCircleOutline} />
           <IonLabel>Users</IonLabel>
+        </IonTabButton> */}
+
+        <IonTabButton tab="partnership" href="/admin/partnership">
+          <IonIcon icon={peopleCircleOutline} />
+          <IonLabel>Partnership</IonLabel>
         </IonTabButton>
 
         <IonTabButton tab="logout" href="/logout">
