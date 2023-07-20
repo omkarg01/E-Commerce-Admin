@@ -8,7 +8,7 @@ import FormContainer from '../components/FormContainer'
 import { register } from '../actions/userActions'
 
 const RegisterScreen = ({ location, history }) => {
-  const [name, setName] = useState('')
+  // const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -36,7 +36,7 @@ const RegisterScreen = ({ location, history }) => {
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
     } else {
-      dispatch(register(name, email, password))
+      dispatch(register(email, password))
     }
   }
 
@@ -48,7 +48,7 @@ const RegisterScreen = ({ location, history }) => {
       {/* {console.log("location in jsx", location)} */}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
-        <Form.Group controlId='name'>
+        {/* <Form.Group controlId='name'>
           <Form.Label>Name</Form.Label>
           <Form.Control
             type='name'
@@ -56,7 +56,7 @@ const RegisterScreen = ({ location, history }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group controlId='email'>
           <Form.Label>Email Address</Form.Label>

@@ -122,13 +122,9 @@ const App = () => {
     <IonApp>
       <IonReactRouter>
         <Switch>
-          {/* <Router> */}
-          {/* <Route path="/login" component={LoginScreen} exact={true} /> */}
-          {/* <Route path='/login' component={LoginScreen} /> */}
           <Route path='/register' component={RegisterScreen} />
           <Route path="/" component={userInfo?.isAdmin ? MainTabs : LoginScreen} />
         </Switch>
-        {/* <MainTabs /> */}
       </IonReactRouter>
     </IonApp>
   )
