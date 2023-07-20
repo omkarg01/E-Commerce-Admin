@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/userActions'
 import { Button, Modal } from 'react-bootstrap';
 
-const LogoutScreen = () => {
+const LogoutScreen = ({history}) => {
     const [show, setShow] = useState(false);
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
@@ -11,6 +11,7 @@ const LogoutScreen = () => {
     const handleClose = () => {
         console.log("closed");
         // logoutHandler()
+        history.goBack()
         setShow(false)
     };
     const handleShow = () => setShow(true);
@@ -18,7 +19,7 @@ const LogoutScreen = () => {
     const dispatch = useDispatch()
 
     const logoutHandler = () => {
-        handleClose()
+        // handleClose()
         dispatch(logout())
     }
     console.log("logout screen")

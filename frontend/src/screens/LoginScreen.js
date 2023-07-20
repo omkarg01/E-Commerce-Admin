@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
@@ -18,6 +19,9 @@ const LoginScreen = ({ location, history }) => {
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
+    console.log(location);
+    console.log(history);
+    console.log('redirect', redirect);
     if (userInfo) {
       history.push(redirect)
     }
@@ -59,14 +63,14 @@ const LoginScreen = ({ location, history }) => {
         </Button>
       </Form>
 
-      {/* <Row className='py-3'>
+      <Row className='py-3'>
         <Col>
-          New Customer?{' '}
-          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
+          New Owner?{' '}
+          <Link to={'/register'}>
             Register
           </Link>
         </Col>
-      </Row> */}
+      </Row>
     </FormContainer>
   )
 }

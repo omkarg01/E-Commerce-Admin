@@ -18,7 +18,7 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
-import { IonTabs, IonTabBar, IonTabButton, IonIcon ,IonLabel, IonRouterOutlet, IonApp } from '@ionic/react';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonApp } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { useSelector } from 'react-redux'
 
@@ -27,6 +27,7 @@ import { Route } from 'react-router';
 import { library, exit, fileTray, peopleCircleOutline, home } from 'ionicons/icons';
 import LogoutScreen from './screens/LogoutScreen'
 import PartnershipScreen from './screens/PartnershipScreen'
+import { Switch } from 'react-router-dom/cjs/react-router-dom'
 
 
 const MainTabs = () => {
@@ -40,9 +41,9 @@ const MainTabs = () => {
         <Route path='/shipping' component={ShippingScreen} />
         <Route path='/payment' component={PaymentScreen} />
         <Route path='/placeorder' component={PlaceOrderScreen} />
-        <Route path='/login' component={LoginScreen} />
-        <Route path='/logout' component={LogoutScreen} />
-        <Route path='/register' component={RegisterScreen} />
+
+
+
         <Route path='/profile' component={ProfileScreen} />
         <Route path='/product/:id' component={ProductScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
@@ -69,7 +70,10 @@ const MainTabs = () => {
           component={HomeScreen}
           exact
         />
+
+        <Route path='/logout' component={LogoutScreen} />
         <Route path='/home' component={HomeScreen} exact />
+        {/* <Route path='/' component={HomeScreen} exact /> */}
         {/* </Container> */}
         {/* </main> */}
         {/* <Footer /> */}
@@ -113,13 +117,17 @@ const MainTabs = () => {
 const App = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
-  // console.log(userInfo);
+  console.log('userInfo', userInfo);
   return (
     <IonApp>
       <IonReactRouter>
-        {/* <Router> */}
-        <Route path="/login" component={LoginScreen} exact={true} />
-        <Route path="/" component={userInfo?.isAdmin ? MainTabs : LoginScreen} />
+        <Switch>
+          {/* <Router> */}
+          {/* <Route path="/login" component={LoginScreen} exact={true} /> */}
+          {/* <Route path='/login' component={LoginScreen} /> */}
+          <Route path='/register' component={RegisterScreen} />
+          <Route path="/" component={userInfo?.isAdmin ? MainTabs : LoginScreen} />
+        </Switch>
         {/* <MainTabs /> */}
       </IonReactRouter>
     </IonApp>

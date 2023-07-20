@@ -21,8 +21,12 @@ const RegisterScreen = ({ location, history }) => {
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
+  // console.log("location out", location);
   useEffect(() => {
+    // console.log("location in", location);
+    console.log("redirect", redirect);
     if (userInfo) {
+      // console.log('inside if');
       history.push(redirect)
     }
   }, [history, userInfo, redirect])
@@ -41,6 +45,7 @@ const RegisterScreen = ({ location, history }) => {
       <h1>Sign Up</h1>
       {message && <Message variant='danger'>{message}</Message>}
       {error && <Message variant='danger'>{error}</Message>}
+      {/* {console.log("location in jsx", location)} */}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
@@ -91,7 +96,7 @@ const RegisterScreen = ({ location, history }) => {
       <Row className='py-3'>
         <Col>
           Have an Account?{' '}
-          <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+          <Link to={'/login'}>
             Login
           </Link>
         </Col>
