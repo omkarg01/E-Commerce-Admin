@@ -49,7 +49,7 @@ const OrderListScreen = ({ history }) => {
             </thead>
             <tbody style={{fontFamily: "Fantasy"}}>
               {console.log(orders)}
-              {orders.map((order, index) => (
+              { orders.map((order, index) => (
                 <tr key={order._id}>
                   <td>{index + 1}</td>
                   <td>{order.user && order.user.name}</td>

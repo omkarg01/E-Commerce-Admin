@@ -83,8 +83,29 @@ const OrderScreen = ({ match, history }) => {
     dispatch(payOrder(orderId, paymentResult))
   }
 
-  const deliverHandler = () => {
-    dispatch(deliverOrder(order))
+  const deliverHandler = async () => {
+    try {
+      const msg = {
+        "to": "cVA9FLIhSIeMHXNRp3-LrH:APA91bGpaT1_QMe9a9clPkvHB56QmQAWjgtp-6-I0rNi2IGzi0MqaS_EAl9ShU2wRc3YG7Lh8glsKevD7unwd1IoS__c48XeuJU5w0y96lY8yI-Jn7221SLFBZa-lbdLEXHstX07Ux1j",
+        "notification": {
+          "body": "Your order has been delivered!",
+          "title": "In E-Commerce App",
+          "android_channel_id": "channel-id4",
+          "sound": "default"
+        }
+      }
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: "key=AAAAK7YEuqo:APA91bGxQyOuHZWal3ovKOofiaOkEskt0YgHSIBV0BK6ic-kX1H1ZDdvlSPvEFqT4uHa1-ZexaI3_d84x6kXVerv2HSaC1WOnO8C36HOGx0FMlJ8uB88ExYb-y80YQ0fbhC2a_Qz0GKJ",
+        },
+      }
+      const { data } = await axios.post("https://fcm.googleapis.com/fcm/send", msg, config)
+      console.log(data);
+      dispatch(deliverOrder(order))
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -130,7 +151,7 @@ const OrderScreen = ({ match, history }) => {
                     <h2>Payment Method</h2>
                     <p>
                       <strong>Method: </strong>
-                      {order.paymentMethod}
+                      {"Google Pay"}
                     </p>
                     {order.isPaid ? (
                       <Message variant='success'>Paid on {order.paidAt}</Message>

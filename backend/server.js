@@ -10,6 +10,9 @@ import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import Stripe from 'stripe';
+const stripe = new Stripe('sk_test_51JCOoESJtAOGSo1GEqFXSPkMgGjGQdpcX4qChLGRDJCxjlleutHhRQozza0O98KGoSLuRAKfVKs0YM1Ks04BORFH007wXVzZUQ');
+
 
 dotenv.config()
 
@@ -23,6 +26,47 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
+app.post('/payment-sheet', async (req, res) => {
+  console.log(req.body);
+  // Use an existing Customer ID if this is a returning customer.
+  const customer = await stripe.customers.create();
+  const ephemeralKey = await stripe.ephemeralKeys.create(
+    { customer: customer.id },
+    { apiVersion: '2020-08-27' }
+  );
+
+  // console.log(req.body.amount);
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 1536,
+    // payment_method_types: ['card'],
+    automatic_payment_methods: {
+      enabled: true,
+    },
+    currency: 'inr',
+    customer: customer.id,
+  });
+
+  res.json({
+    paymentIntent: paymentIntent.client_secret,
+    ephemeralKey: ephemeralKey.secret,
+    customer: customer.id,
+    publishableKey: 'pk_test_51JCOoESJtAOGSo1GjUJm9x0hW6UbSFo1Rhm1qH8QkXfm6egZZIG6hwzcaA6nwPLiUqK1uzSC0Z6zXbRIIk2L682O00p7Hz4FNn'
+  });
+});
+
+const paymentIntent = await stripe.paymentIntents.create({
+  payment_method_types: ['card'],
+  amount: 1099,
+  currency: 'inr',
+})
+
+app.post('/create-payment-intent', (req, res) => {
+  const intent = paymentIntent;
+  console.log(intent);
+  res.send({clientSecret: intent.client_secret});
+});
+
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
@@ -31,6 +75,8 @@ app.use('/api/upload', uploadRoutes)
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
+
+
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

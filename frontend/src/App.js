@@ -18,13 +18,14 @@ import UserEditScreen from './screens/UserEditScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet, IonApp } from '@ionic/react';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon ,IonLabel, IonRouterOutlet, IonApp } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { useSelector } from 'react-redux'
 
 import { Route } from 'react-router';
 
-import { library, exit, fileTray, peopleCircleOutline } from 'ionicons/icons';
+import { library, exit, fileTray, peopleCircleOutline, home } from 'ionicons/icons';
+import LogoutScreen from './screens/LogoutScreen'
 
 
 const MainTabs = () => {
@@ -39,6 +40,7 @@ const MainTabs = () => {
         <Route path='/payment' component={PaymentScreen} />
         <Route path='/placeorder' component={PlaceOrderScreen} />
         <Route path='/login' component={LoginScreen} />
+        <Route path='/logout' component={LogoutScreen} />
         <Route path='/register' component={RegisterScreen} />
         <Route path='/profile' component={ProfileScreen} />
         <Route path='/product/:id' component={ProductScreen} />
@@ -65,29 +67,34 @@ const MainTabs = () => {
           component={HomeScreen}
           exact
         />
-        <Route path='/' component={HomeScreen} exact />
+        <Route path='/home' component={HomeScreen} exact />
         {/* </Container> */}
         {/* </main> */}
         {/* <Footer /> */}
         {/* </Router> */}
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-        <IonTabButton tab="home" href="/admin/productlist">
+        <IonTabButton tab="home" href="/home">
+          <IonIcon icon={home} />
+          <IonLabel>Home</IonLabel>
+        </IonTabButton>
+
+        <IonTabButton tab="products" href="/admin/productlist">
           <IonIcon icon={library} />
           <IonLabel>Products</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="radio" href="/admin/orderlist">
+        <IonTabButton tab="orders" href="/admin/orderlist">
           <IonIcon icon={fileTray} />
           <IonLabel>Orders</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="library" href="/admin/userlist">
+        <IonTabButton tab="users" href="/admin/userlist">
           <IonIcon icon={peopleCircleOutline} />
           <IonLabel>Users</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="search" href="/search">
+        <IonTabButton tab="logout" href="/logout">
           <IonIcon icon={exit} />
           <IonLabel>Logout</IonLabel>
         </IonTabButton>
