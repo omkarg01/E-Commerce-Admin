@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { Form, Button, Row } from 'react-bootstrap'
+import { Form, Button, Row, FormCheck } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -24,6 +24,7 @@ const PartnershipScreen = ({ match, history }) => {
     const [pandcard, setPandcard] = useState('')
     const [uploading, setUploading] = useState(false)
     const [image, setImage] = useState('')
+    const [isChecked, setIsChecked] = useState(false);
 
     const dispatch = useDispatch()
 
@@ -194,12 +195,13 @@ const PartnershipScreen = ({ match, history }) => {
 
                             <Form.Group controlId='image'>
                                 <Form.Label>Shop Registration Ceritificate</Form.Label>
-                                {/* <Form.Control
-                  type='text'
-                  placeholder='Enter image url'
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
-                ></Form.Control> */}
+                                <Form.Control
+                                    type='text'
+                                    placeholder='Image url'
+                                    value={image}
+                                    onChange={(e) => setImage(e.target.value)}
+                                    disabled={true}
+                                ></Form.Control>
                                 <Form.File
                                     id='image-file'
                                     label='Choose File'
@@ -217,6 +219,10 @@ const PartnershipScreen = ({ match, history }) => {
                                     value={pandcard}
                                     onChange={(e) => setPandcard(e.target.value)}
                                 ></Form.Control>
+                            </Form.Group>
+
+                            <Form.Group controlId='terms&conditions'>
+                                <FormCheck id="terms&conditions" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} label="Terms & Conditions" />
                             </Form.Group>
                             {/* 
               <Form.Group controlId='countInStock'>
