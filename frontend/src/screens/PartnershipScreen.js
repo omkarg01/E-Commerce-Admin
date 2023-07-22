@@ -81,6 +81,8 @@ const PartnershipScreen = ({ match, history }) => {
     }
 
     const submitHandler = (e) => {
+        alert("Your request has been submitted.")
+        history.push('/home')
         e.preventDefault()
         // dispatch(
         //   updateProduct({

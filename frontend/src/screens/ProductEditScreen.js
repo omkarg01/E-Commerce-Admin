@@ -89,7 +89,9 @@ const ProductEditScreen = ({ match, history }) => {
         description,
         countInStock,
       })
-    )
+      )
+      alert("Product Updated Successfully")
+      history.push('/admin/productlist')
   }
 
   return (
