@@ -7,7 +7,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
 import ProductCarousel from '../components/ProductCarousel'
-import Meta from '../components/Meta'
+// import Meta from '../components/Meta'
 import { listProducts } from '../actions/productActions'
 import { IonContent, IonPage } from '@ionic/react'
 import MyHeader from '../components/MyHeader'
@@ -31,7 +31,7 @@ const HomeScreen = ({ match }) => {
     <IonPage>
       <MyHeader title={"Welcome to Admin Page"} />
       <IonContent className="ion-padding">
-      <Meta />
+      {/* <Meta /> */}
       {!keyword ? (
         <ProductCarousel />
       ) : (
